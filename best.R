@@ -4,7 +4,7 @@ best <- function(state, outcome) {
   ## Return hospital name in that state with lowest 30-day death
   ## rate
   data <- read.csv("outcome-of-care-measures.csv", colClasses = "character")
-  newdata <- data[which(data$State == state),]
+  newdata <- subset(data[order(data$Hospital.Name),], State == state)
   
   if (nrow(newdata) == 0) {
     stop("invalid state")
